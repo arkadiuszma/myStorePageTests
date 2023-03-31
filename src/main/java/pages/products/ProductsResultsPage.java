@@ -1,5 +1,6 @@
 package pages.products;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,9 +8,10 @@ import pages.base.BasePage;
 
 import java.util.List;
 
-public class ProductsResultPage extends BasePage {
+@Slf4j
+public class ProductsResultsPage extends BasePage {
 
-    public ProductsResultPage(WebDriver driver) {
+    public ProductsResultsPage(WebDriver driver) {
         super(driver);
     }
     @FindBy(css = ".product-miniature")
@@ -19,7 +21,9 @@ public class ProductsResultPage extends BasePage {
         return products.stream().map(element -> new ProductsMiniaturePage(driver, element)).toList();
     }
     public String getProductTitle(){
-        List <String> list = getProducts().stream().map(ProductsMiniaturePage::getProductTitle).toList();
-        return list.get(0);
+        log.info("Getting product title");
+        String productTitle = getProducts().stream().map(ProductsMiniaturePage::getProductTitle).toList().get(0);
+        log.info("Product title: " + productTitle);
+        return productTitle;
     }
 }

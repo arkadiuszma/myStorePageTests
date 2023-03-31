@@ -1,10 +1,11 @@
-package tests;
+package tests.configuration;
 
 import configuration.DriverFactory;
 import configuration.PropertyStore;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
@@ -12,10 +13,13 @@ import pages.base.BasePage;
 @Slf4j
 public abstract class BaseTest {
     protected WebDriver driver;
+    @BeforeAll
+    protected static void loadConfig(){
+        new PropertyStore();
+    }
 
     @BeforeEach
     protected void setupDriver() {
-        new PropertyStore();
         driver = new DriverFactory().getDriver();
         log.debug("Driver initialized properly");
     }
@@ -27,7 +31,7 @@ public abstract class BaseTest {
     }
     @SneakyThrows
     protected <T extends BasePage> T at(Class <T> pageName){
-        log.debug("Creating page object: " + pageName.getName());
+        log.debug("Current page object: " + pageName.getName());
         return pageName.getDeclaredConstructor(WebDriver.class).newInstance(driver);
     }
 }

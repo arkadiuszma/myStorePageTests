@@ -36,6 +36,8 @@ public class BasePage {
     protected Actions action;
 
     protected <T> T getRandomElementFromList(List<T> elements){
+        assert elements != null;
+        log.info("Getting random element from list");
         return elements.get(new Random().nextInt(elements.size()));
     }
     protected BigDecimal getPrice(WebElement element){
@@ -44,6 +46,7 @@ public class BasePage {
     protected void clickElement(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
+        log.info("Element: " + element.getText() + " was clicked");
     }
     protected void sendKeysToElement(WebElement element, String text){
         element.clear();

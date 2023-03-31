@@ -1,5 +1,6 @@
 package pages.products;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,7 @@ import pages.base.BasePage;
 
 import java.util.List;
 
+@Slf4j
 public class ProductsGridPage extends BasePage {
 
     public ProductsGridPage(WebDriver driver) {
@@ -35,8 +37,16 @@ public class ProductsGridPage extends BasePage {
         sendKeysToElement(searchInput, productName);
         return productName;
     }
-    public ProductsResultPage goToProductsDetailsPage(){
+    public ProductsGridPage enterSearchingProduct(String text){
+        sendKeysToElement(searchInput, text);
+        return this;
+    }
+    public List <String> getSearchProductNames(){
+        log.info("Getting search product names to list");
+        return searchItems.stream().map(WebElement::getText).toList();
+    }
+    public ProductsResultsPage clickSearchProducts(){
         clickElement(searchBtn);
-        return new ProductsResultPage(driver);
+        return new ProductsResultsPage(driver);
     }
 }
