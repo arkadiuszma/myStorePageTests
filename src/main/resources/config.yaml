@@ -1,0 +1,13 @@
+configuration:
+  browser: chrome
+  webElementTimeout: 10
+  defaultTimeout: 3
+  url: http://146.59.32.4/index.php
+
+user:
+  name: Jan
+  lastName: Kowalski
+  eMail: jkowalski@example.com
+  password: jkowalski123@
+
+
