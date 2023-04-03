@@ -27,7 +27,9 @@ public class PropertyStore {
     private void getConfigFileValues() {
         getObjectValues("configuration");
         getObjectValues("user");
-            log.debug(" >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Config values loaded");
+        getObjectValues("searchTestData");
+        getObjectValues("categoriesTestData");
+            log.debug("Config values loaded");
         }
     private void getObjectValues(String object){
         Map<String, Object> properties = (Map<String, Object>) readConfigFile().get(object);

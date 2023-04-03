@@ -4,8 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import pages.products.ProductsGridPage;
 import pages.products.ProductsResultsPage;
 import tests.configuration.BaseTest;
@@ -23,10 +21,10 @@ public class SearchTest extends BaseTest {
         String productDetailName = at(ProductsResultsPage.class).getProductTitle();
         Assertions.assertThat(productName).isEqualTo(productDetailName);
     }
-    @ParameterizedTest
+    @Test
     @DisplayName("Dropdown search test")
-    @CsvSource({"HUMMINGBIRD"})
-    public void shouldShowProductsContainsOfGivenName(String productName){
+    public void shouldShowProductsContainsOfGivenName(){
+        String productName = System.getProperty("product");
         log.info("Start dropdown search test");
         List<String> productsList = at(ProductsGridPage.class).enterSearchingProduct(productName)
                 .getSearchProductNames();
