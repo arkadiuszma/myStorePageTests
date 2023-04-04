@@ -61,10 +61,15 @@ public class ProductsGridPage extends BasePage {
         return new ProductsResultsPage(driver);
     }
 
-    public ProductCategoriesPage clickCategory(int numberOfElement) {
+    public ProductsCategoriesPage clickCategoryByIndex(int numberOfElement) {
         log.info("Clicking in chosen category");
         categoriesList.get(numberOfElement).click();
-        return new ProductCategoriesPage(driver);
+        return new ProductsCategoriesPage(driver);
+    }
+    public ProductsCategoriesPage clickCategoryByName(String name) {
+        log.info("Clicking in chosen category: " + name);
+        categoriesList.stream().filter(el -> el.getText().equals(name)).toList().get(0).click();
+        return new ProductsCategoriesPage(driver);
     }
 
     public String getCategoryText(int numberOfElement) {
@@ -78,11 +83,11 @@ public class ProductsGridPage extends BasePage {
         return subCategoriesList.get(i).getText();
     }
 
-    public ProductCategoriesPage clickSubCategory(int i) {
+    public ProductsCategoriesPage clickSubCategory(int i) {
         log.info("Clicking sub category");
         chooseProperCategory(i);
         subCategoriesList.get(i).click();
-        return new ProductCategoriesPage(driver);
+        return new ProductsCategoriesPage(driver);
     }
 
     private void chooseProperCategory(int i) {

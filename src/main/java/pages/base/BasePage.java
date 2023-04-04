@@ -6,10 +6,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.math.BigDecimal;
@@ -48,7 +48,6 @@ public class BasePage {
     protected void clickElement(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
-        log.info("Element: " + element.getText() + " was clicked");
     }
     protected void sendKeysToElement(WebElement element, String text){
         element.clear();
@@ -70,5 +69,12 @@ public class BasePage {
     }
     protected void moveToElement (WebElement element){
         action.moveToElement(element).perform();
+    }
+    protected void wait(int seconds){
+        try {
+            Thread.sleep(1000 * seconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
+import java.math.BigDecimal;
+
 
 public class ProductsMiniaturePage extends BasePage {
 
@@ -20,7 +22,7 @@ public class ProductsMiniaturePage extends BasePage {
     public String getProductTitle(){
         return getWebElementText(productTitle);
     }
-    public String getProductPrice(){
-        return getWebElementText(productPrice);
+    public BigDecimal getProductPrice(){
+        return getPrice(productPrice);
     }
 }

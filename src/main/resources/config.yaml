@@ -17,6 +17,9 @@ categoriesTestData:
   categoryNumber: 3
   subCategoryNumber: 4
   clothesCategoryNumber: 2
+  categoryFilter: ACCESSORIES
+  priceFrom: 13
+  priceTo: 15
 
 
 
