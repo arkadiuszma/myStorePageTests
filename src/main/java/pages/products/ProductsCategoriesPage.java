@@ -36,7 +36,7 @@ public class ProductsCategoriesPage extends BasePage {
 
     public String getCategoryName() {
         log.info("Getting category name from result page");
-        return categoryTitle.getText();
+        return getWebElementText(categoryTitle);
     }
 
     public boolean isFilterGridDisplayed() {

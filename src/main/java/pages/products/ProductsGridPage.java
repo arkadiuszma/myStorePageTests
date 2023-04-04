@@ -80,7 +80,7 @@ public class ProductsGridPage extends BasePage {
     public String getSubCategoryText(int i) {
         log.info("Getting sub category text");
         chooseProperCategory(i);
-        return subCategoriesList.get(i).getText();
+        return getWebElementText(subCategoriesList.get(i));
     }
 
     public ProductsCategoriesPage clickSubCategory(int i) {
