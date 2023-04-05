@@ -1,6 +1,7 @@
 package tests.cart;
 
 public class CartDataProvider {
+
     protected String getCategoryName() {
         return System.getProperty("categoryName");
     }
@@ -22,7 +23,12 @@ public class CartDataProvider {
     protected String getCartQuantityExpectedText(){
         return "(" + getQuantity() + ")";
     }
-
+    protected int getNumberOfProducts() {
+        return getIntValue(System.getProperty("productsNumber"));
+    }
+    protected String getUrl(){
+        return System.getProperty("url");
+    }
     private int getIntValue(String value) {
         assert value != null;
         return Integer.parseInt(value);

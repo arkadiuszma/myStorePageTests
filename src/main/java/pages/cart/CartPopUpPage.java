@@ -28,6 +28,8 @@ public class CartPopUpPage extends BasePage {
     private WebElement continueShoppingBtn;
     @FindBy(css = ".product-name")
     private WebElement productName;
+    @FindBy(css = "a.btn-primary")
+    private WebElement checkoutBtn;
 
     public BigDecimal getProductPrice() {
         log.info("Getting product price from cart pop up page");
@@ -61,5 +63,11 @@ public class CartPopUpPage extends BasePage {
     }
     public Product getProductDetails(){
         return new Product(getProductName(), getProductPrice(), getQuantity(), getTotalProductsCost());
+    }
+
+    public CartPage goToCartPage() {
+        log.info("Clicking go to checkout");
+        clickElement(checkoutBtn);
+        return new CartPage(driver);
     }
 }

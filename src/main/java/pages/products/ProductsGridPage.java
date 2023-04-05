@@ -97,4 +97,9 @@ public class ProductsGridPage extends BasePage {
             moveToElement(categoriesList.get(1));
         }
     }
+    public ProductsDetailsPage getRandomProduct(){
+        log.info("Getting random products");
+        getRandomElementFromList(getProducts()).clickProduct();
+        return new ProductsDetailsPage(driver);
+    }
 }

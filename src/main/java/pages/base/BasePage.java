@@ -80,4 +80,7 @@ public class BasePage {
             throw new RuntimeException(e);
         }
     }
+    protected String getInnerText(WebElement element){
+        return element.getAttribute("innerText");
+    }
 }

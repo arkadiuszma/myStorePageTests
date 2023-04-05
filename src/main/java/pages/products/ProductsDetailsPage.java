@@ -29,7 +29,7 @@ public class ProductsDetailsPage extends BasePage {
     private WebElement productName;
 
     public ProductsDetailsPage setQuantity(int quantity) {
-        log.info("Setting product quantity");
+        log.info("Setting product quantity: " + quantity);
         sendKeysToElement(this.quantity, String.valueOf(quantity));
         return this;
     }
@@ -58,7 +58,6 @@ public class ProductsDetailsPage extends BasePage {
         return Integer.parseInt(quantity.getAttribute("value"));
     }
     public Product getProductDetailsBeforeAddToCart(){
-        BigDecimal total = getProductPrice().multiply(BigDecimal.valueOf(getQuantity()));
-        return new Product(getProductName(), getProductPrice(), getQuantity(), total);
+        return new Product(getProductName(), getProductPrice(), getQuantity());
     }
 }
