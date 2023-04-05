@@ -9,7 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.math.BigDecimal;
@@ -29,7 +28,7 @@ public class BasePage {
     }
     protected void initDriver(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(System.getProperty("webElementTimeout"))));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(System.getProperty("webElementTimeout"))));
         action = new Actions(driver);
     }
 
@@ -44,6 +43,9 @@ public class BasePage {
     }
     protected BigDecimal getPrice(WebElement element){
         return new BigDecimal(element.getText().replace("$", ""));
+    }
+    protected BigDecimal getPriceFromString(String text){
+        return new BigDecimal(text.replace("$", ""));
     }
     protected void clickElement(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -71,8 +73,9 @@ public class BasePage {
         action.moveToElement(element).perform();
     }
     protected void wait(int seconds){
+        long x = 1000;
         try {
-            Thread.sleep(1000 * seconds);
+            Thread.sleep(x * seconds);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

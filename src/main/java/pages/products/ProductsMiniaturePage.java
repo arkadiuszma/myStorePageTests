@@ -25,4 +25,7 @@ public class ProductsMiniaturePage extends BasePage {
     public BigDecimal getProductPrice(){
         return getPrice(productPrice);
     }
+    public void clickProduct(){
+        clickElement(productTitle);
+    }
 }

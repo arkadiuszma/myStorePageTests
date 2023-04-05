@@ -29,6 +29,7 @@ public class PropertyStore {
         getObjectValues("user");
         getObjectValues("searchTestData");
         getObjectValues("categoriesTestData");
+        getObjectValues("basketTestData");
             log.debug("Config values loaded");
         }
     private void getObjectValues(String object){

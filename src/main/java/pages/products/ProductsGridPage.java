@@ -56,9 +56,9 @@ public class ProductsGridPage extends BasePage {
         return searchItems.stream().map(WebElement::getText).toList();
     }
 
-    public ProductsResultsPage clickSearchProducts() {
+    public ProductsResultPage clickSearchProducts() {
         clickElement(searchBtn);
-        return new ProductsResultsPage(driver);
+        return new ProductsResultPage(driver);
     }
 
     public ProductsCategoriesPage clickCategoryByIndex(int numberOfElement) {

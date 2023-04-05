@@ -1,6 +1,6 @@
 package tests.categories;
 
-import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.products.ProductsCategoriesPage;
@@ -9,6 +9,7 @@ import tests.configuration.BaseTest;
 
 public class CategoriesTest extends BaseTest {
     CategoriesDataProvider c = new CategoriesDataProvider();
+    SoftAssertions s = new SoftAssertions();
 
     @Test
     @DisplayName("Categories test")
@@ -16,9 +17,9 @@ public class CategoriesTest extends BaseTest {
         for (int i = 0; i < c.getCategoriesNumber(); i++) {
             String categoryName = at(ProductsGridPage.class).getCategoryText(i);
             at(ProductsGridPage.class).clickCategoryByIndex(i);
-            Assertions.assertThat(at(ProductsCategoriesPage.class).isFilterGridDisplayed()).isEqualTo(true);
-            Assertions.assertThat(categoryName).isEqualTo(at(ProductsCategoriesPage.class).getCategoryName());
-            Assertions.assertThat(at(ProductsCategoriesPage.class).getNumberOfProducts()).isEqualTo(at(ProductsCategoriesPage.class).getProductsCount());
+            s.assertThat(at(ProductsCategoriesPage.class).isFilterGridDisplayed()).isEqualTo(true);
+            s.assertThat(categoryName).isEqualTo(at(ProductsCategoriesPage.class).getCategoryName());
+            s.assertThat(at(ProductsCategoriesPage.class).getNumberOfProducts()).isEqualTo(at(ProductsCategoriesPage.class).getProductsCount());
         }
     }
 
@@ -28,9 +29,9 @@ public class CategoriesTest extends BaseTest {
         for (int i = 0; i < c.getSubCategoriesNumber(); i++) {
             String categoryName = at(ProductsGridPage.class).getSubCategoryText(i);
             at(ProductsGridPage.class).clickSubCategory(i);
-            Assertions.assertThat(at(ProductsCategoriesPage.class).isFilterGridDisplayed()).isEqualTo(true);
-            Assertions.assertThat(categoryName).isEqualTo(at(ProductsCategoriesPage.class).getCategoryName());
-            Assertions.assertThat(at(ProductsCategoriesPage.class).getNumberOfProducts()).isEqualTo(at(ProductsCategoriesPage.class).getProductsCount());
+            s.assertThat(at(ProductsCategoriesPage.class).isFilterGridDisplayed()).isEqualTo(true);
+            s.assertThat(categoryName).isEqualTo(at(ProductsCategoriesPage.class).getCategoryName());
+            s.assertThat(at(ProductsCategoriesPage.class).getNumberOfProducts()).isEqualTo(at(ProductsCategoriesPage.class).getProductsCount());
         }
     }
 }

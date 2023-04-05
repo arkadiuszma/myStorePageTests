@@ -118,4 +118,10 @@ public class ProductsCategoriesPage extends BasePage {
         wait(1);
         return this;
     }
+
+    public ProductsDetailsPage getProductByName(String productName) {
+        log.info("Getting product by name: " + productName);
+        getProducts().stream().filter(el -> el.getProductTitle().equals(productName)).toList().get(0).clickProduct();
+        return new ProductsDetailsPage(driver);
+    }
 }

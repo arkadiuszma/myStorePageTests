@@ -9,9 +9,9 @@ import pages.base.BasePage;
 import java.util.List;
 
 @Slf4j
-public class ProductsResultsPage extends BasePage {
+public class ProductsResultPage extends BasePage {
 
-    public ProductsResultsPage(WebDriver driver) {
+    public ProductsResultPage(WebDriver driver) {
         super(driver);
     }
     @FindBy(css = ".product-miniature")

@@ -21,5 +21,10 @@ categoriesTestData:
   priceFrom: 13
   priceTo: 15
 
+basketTestData:
+  categoryName: ART
+  productName: THE BEST IS YET POSTER
+  quantity: 3
+
 
 
