@@ -12,11 +12,13 @@ import java.util.List;
 
 @Slf4j
 public class SearchTest extends BaseTest {
+    SearchTestDataProvider s = new SearchTestDataProvider();
+    private String productName;
     @Test
     @DisplayName("Search product title test")
     public void shouldSearchExpectedProduct() {
         log.info("Start search product title test");
-        String productName = at(ProductsGridPage.class).chooseRandomProductAndGetTitle();
+        productName = at(ProductsGridPage.class).getRandomProductNameAndClick();
         at(ProductsGridPage.class).clickSearchProducts();
         String productDetailName = at(ProductsResultPage.class).getProductTitle();
         Assertions.assertThat(productName).isEqualTo(productDetailName);
@@ -25,8 +27,8 @@ public class SearchTest extends BaseTest {
     @Test
     @DisplayName("Dropdown search test")
     public void shouldShowProductsContainsOfGivenName() {
-        String productName = System.getProperty("product");
         log.info("Start dropdown search test");
+        productName = s.getProductName();
         List<String> productsList = at(ProductsGridPage.class).enterSearchingProduct(productName)
                 .getSearchProductNames();
         log.info("Checking that all elements from list contains searching text");

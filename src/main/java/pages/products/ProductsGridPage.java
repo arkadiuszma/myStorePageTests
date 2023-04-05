@@ -40,7 +40,7 @@ public class ProductsGridPage extends BasePage {
         return getRandomElementFromList(list);
     }
 
-    public String chooseRandomProductAndGetTitle() {
+    public String getRandomProductNameAndClick() {
         String productName = getRandomProductTitle();
         sendKeysToElement(searchInput, productName);
         return productName;

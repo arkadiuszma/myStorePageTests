@@ -18,6 +18,7 @@ public class FiltersTest extends BaseTest {
     @Test
     @DisplayName("Filters test")
     public void shouldCheckFiltersWork() {
+        log.info("Start filters test");
         at(ProductsGridPage.class).clickCategoryByName(c.getCategoryFilterText());
         long quantityBefore = at(ProductsCategoriesPage.class).getProductsCount();
         boolean isPriceBetweenFilters = at(ProductsCategoriesPage.class).filterByPrice(priceFrom, priceTo)
@@ -27,5 +28,6 @@ public class FiltersTest extends BaseTest {
         log.info("Checking assertions");
         s.assertThat(isPriceBetweenFilters).isEqualTo(true);
         s.assertThat(quantityBefore).isEqualTo(quantityAfter);
+        s.assertAll();
     }
 }

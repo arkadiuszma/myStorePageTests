@@ -11,34 +11,31 @@ import pages.products.ProductsGridPage;
 import testModels.Product;
 import tests.configuration.BaseTest;
 
+
 @Slf4j
 public class BasketTest extends BaseTest {
     CartDataProvider c = new CartDataProvider();
-    Product product;
+    Product productDetailsAfterAdd;
+    Product productDetailsBeforeAdd;
     SoftAssertions s = new SoftAssertions();
-    int qnt = c.getQuantity();
-    String productName = c.getProductName();
 
     @Test
     @DisplayName("Cart test")
-    public void cartTest() {
+    public void shouldValidCorrectProductProperties() {
         at(ProductsGridPage.class).clickCategoryByName(c.getCategoryName());
-        at(ProductsCategoriesPage.class).getProductByName(productName);
-        String productPrice = String.valueOf(at(ProductsDetailsPage.class).getProductPrice());
-        at(ProductsDetailsPage.class).setQuantity(qnt)
-                .addToCart();
+        at(ProductsCategoriesPage.class).getProductByName(c.getProductName());
+        at(ProductsDetailsPage.class).setQuantity(c.getQuantity());
+        productDetailsBeforeAdd = at(ProductsDetailsPage.class).getProductDetailsBeforeAddToCart();
+        at(ProductsDetailsPage.class).addToCart();
         String quantityText = at(CartPopUpPage.class).getProductQuantityAssertion();
-        product = new Product(at(CartPopUpPage.class).getProductName(), at(CartPopUpPage.class).getProductPrice(),
-                at(CartPopUpPage.class).getQuantity(), at(CartPopUpPage.class).getTotalProductsCost());
+        productDetailsAfterAdd = at(CartPopUpPage.class).getProductDetails();
         at(CartPopUpPage.class).continueShoppingClick();
         String basketCount = at(ProductsDetailsPage.class).getCartProductsCount();
 
         log.info("Starting assertions");
-        s.assertThat(product.name()).isEqualTo(productName);
-        s.assertThat(product.price()).isEqualTo(productPrice);
-        s.assertThat(product.quantity()).isEqualTo(qnt);
-        s.assertThat(product.totalCost()).isEqualTo(product.getTotalPrice());
+        s.assertThat(productDetailsAfterAdd).usingRecursiveComparison().isEqualTo(productDetailsBeforeAdd);
         s.assertThat(quantityText).isEqualTo(c.getQuantityAssertionText());
         s.assertThat(basketCount).isEqualTo(c.getCartQuantityExpectedText());
+        s.assertAll();
     }
 }

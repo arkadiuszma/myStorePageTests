@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 import pages.products.ProductsDetailsPage;
+import testModels.Product;
 
 import java.math.BigDecimal;
 
@@ -57,5 +58,8 @@ public class CartPopUpPage extends BasePage {
     public String getProductName() {
         log.info("Getting product name from cart pop up page");
         return productName.getAttribute("innerText");
+    }
+    public Product getProductDetails(){
+        return new Product(getProductName(), getProductPrice(), getQuantity(), getTotalProductsCost());
     }
 }
