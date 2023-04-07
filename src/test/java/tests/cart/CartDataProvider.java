@@ -46,6 +46,14 @@ public class CartDataProvider {
         return System.getProperty("url");
     }
 
+    protected String getMessage() {
+        return System.getProperty("noItemsMessage");
+    }
+
+    protected String getZeroQuantityInBasketText() {
+        return System.getProperty("quantityIfZeroProductsInCartText");
+    }
+
     private int getIntValue(String value) {
         assert value != null;
         return Integer.parseInt(value);

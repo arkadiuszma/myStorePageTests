@@ -21,6 +21,10 @@ public class CartPage extends BasePage {
     private List<WebElement> cartItemsList;
     @FindBy(css = "#cart-subtotal-products span.value")
     private WebElement totalProductCosts;
+    @FindBy(css = ".no-items")
+    private WebElement noItemsMessage;
+    @FindBy(css = "span.cart-products-count")
+    private WebElement cartProductsCount;
 
     public Order toOrder() {
         log.info("Getting products order from cart page");
@@ -49,5 +53,13 @@ public class CartPage extends BasePage {
         log.info("Getting total items cost");
         wait(2);
         return getPrice(totalProductCosts);
+    }
+    public String getNoItemsInCartMessage(){
+        return getWebElementText(noItemsMessage);
+    }
+
+    public String getCartProductsCount() {
+        log.info("Getting products count located in basket");
+        return cartProductsCount.getAttribute("innerText");
     }
 }

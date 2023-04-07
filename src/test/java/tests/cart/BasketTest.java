@@ -73,6 +73,10 @@ public class BasketTest extends BaseTest {
             boolean isEqualAfterSecondRemove = isTotalCostEqualAfterRemove(indexOfElementToRemove);
             s.assertThat(isEqualAfterSecondRemove).isEqualTo(true);
         }
+        if (expectedOrder.getProductsCount() == 0) {
+            s.assertThat(at(CartPage.class).getNoItemsInCartMessage()).isEqualTo(c.getMessage());
+            s.assertThat(at(CartPage.class).getCartProductsCount()).isEqualTo(c.getZeroQuantityInBasketText());
+        }
         log.info("Start assertions");
         s.assertThat(cost).isEqualTo(expectedCost);
         s.assertThat(isEqualAfterFirstRemove).isEqualTo(true);

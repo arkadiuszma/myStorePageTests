@@ -29,6 +29,8 @@ basketTestData:
   productsNumberInRemovingTest: 2
   quantityRandom: 5
   indexOfElementToRemove: 1
+  noItemsMessage: There are no more items in your cart
+  quantityIfZeroProductsInCartText: (0)
 
 
 
