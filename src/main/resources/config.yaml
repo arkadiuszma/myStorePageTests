@@ -25,7 +25,10 @@ basketTestData:
   categoryName: ART
   productName: THE BEST IS YET POSTER
   quantity: 3
-  productsNumber: 10
+  productsNumberInOrderTest: 10
+  productsNumberInRemovingTest: 2
+  quantityRandom: 5
+  indexOfElementToRemove: 1
 
 
 

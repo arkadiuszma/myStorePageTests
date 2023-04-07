@@ -13,22 +13,39 @@ public class CartDataProvider {
     protected int getQuantity() {
         return getIntValue(System.getProperty("quantity"));
     }
+
+    protected int getQuantityToRandom() {
+        return getIntValue(System.getProperty("quantityRandom"));
+    }
+
     protected String getQuantityAssertionText() {
         int qnt = getQuantity();
-        if (qnt==1){
+        if (qnt == 1) {
             return "There is " + qnt + " item in your cart.";
         }
         return "There are " + qnt + " items in your cart.";
     }
-    protected String getCartQuantityExpectedText(){
+
+    protected String getCartQuantityExpectedText() {
         return "(" + getQuantity() + ")";
     }
-    protected int getNumberOfProducts() {
-        return getIntValue(System.getProperty("productsNumber"));
+
+    protected int getOrderProductNumber() {
+        return getIntValue(System.getProperty("productsNumberInOrderTest"));
     }
-    protected String getUrl(){
+
+    protected int getRemovingTestProductNumber() {
+        return getIntValue(System.getProperty("productsNumberInRemovingTest"));
+    }
+
+    protected int getIndexOfElementToRemove() {
+        return getIntValue(System.getProperty("indexOfElementToRemove"));
+    }
+
+    protected String getUrl() {
         return System.getProperty("url");
     }
+
     private int getIntValue(String value) {
         assert value != null;
         return Integer.parseInt(value);
