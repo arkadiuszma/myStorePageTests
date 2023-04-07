@@ -3,8 +3,9 @@ package models;
 public class UserBuilder{
     private String firstName;
     private String lastName;
-    private String eMail;
-    private String password;
+    private String city;
+    private String postCode;
+    private String state;
 
 
     public UserBuilder firstName(String firstName) {
@@ -15,15 +16,19 @@ public class UserBuilder{
         this.lastName = lastName;
         return this;
     }
-    public UserBuilder eMail(String eMail) {
-        this.eMail = eMail;
+    public UserBuilder city(String city) {
+        this.city = city;
         return this;
     }
-    public UserBuilder password(String password) {
-        this.password = password;
+    public UserBuilder postCode(String postCode) {
+        this.postCode = postCode;
+        return this;
+    }
+    public UserBuilder state(String state) {
+        this.state = state;
         return this;
     }
     public User build(){
-        return new User(firstName, lastName, eMail, password);
+        return new User(firstName, lastName, state, city, postCode);
     }
 }

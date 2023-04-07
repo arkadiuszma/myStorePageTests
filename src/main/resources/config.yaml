@@ -9,6 +9,10 @@ user:
   lastName: Kowalski
   eMail: jkowalski@example.com
   password: jkowalski123@
+  address: Baker Street 23
+  city: New York
+  state: New York
+  postCode: 12133
 
 searchTestData:
   product: HUMMINGBIRD
@@ -31,6 +35,15 @@ basketTestData:
   indexOfElementToRemove: 1
   noItemsMessage: There are no more items in your cart
   quantityIfZeroProductsInCartText: (0)
+
+checkoutTest:
+  productNameInCheckoutTest: THE BEST IS YET POSTER
+  productPrice: 29.00
+  secondAddress: Park Avenue 4
+  secondCity: Texas
+  secondState: California
+  secondPostCode: 54214
+  category: ORDER HISTORY AND DETAILS
 
 
 

@@ -56,7 +56,7 @@ public class BasketTest extends BaseTest {
     public void shouldValidRandomProductsOrder() {
         log.info("Start order generic test");
         getProductsToBasket(c.getOrderProductNumber());
-        actualOrder = at(CartPopUpPage.class).goToCartPage().toOrder();
+        actualOrder = at(CartPopUpPage.class).clickProceedToCheckout().toOrder();
         log.info("Start assertion");
         Assertions.assertThat(actualOrder).usingRecursiveComparison().isEqualTo(expectedOrder);
     }
@@ -66,7 +66,7 @@ public class BasketTest extends BaseTest {
     public void shouldRemoveProductsFromCart() {
         log.info("Start remove product test");
         getProductsToBasket(productsNumber);
-        BigDecimal cost = at(CartPopUpPage.class).goToCartPage().getTotalItemsCost();
+        BigDecimal cost = at(CartPopUpPage.class).clickProceedToCheckout().getTotalItemsCost();
         BigDecimal expectedCost = expectedOrder.getTotalOrderSum();
         boolean isEqualAfterFirstRemove = isTotalCostEqualAfterRemove(expectedOrder.getProductsCount());
         if (expectedOrder.getProductsCount() > 0 && expectedOrder.getProductsCount() >= indexOfElementToRemove) {

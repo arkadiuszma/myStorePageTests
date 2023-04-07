@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
-import pages.products.ProductsDetailsPage;
 import testModels.Product;
 
 import java.math.BigDecimal;
@@ -51,10 +50,9 @@ public class CartPopUpPage extends BasePage {
         return getPriceFromString(productTotalValue.getAttribute("innerText"));
     }
 
-    public ProductsDetailsPage continueShoppingClick() {
+    public void continueShoppingClick() {
         log.info("Clicking continue shopping");
         clickElement(continueShoppingBtn);
-        return new ProductsDetailsPage(driver);
     }
 
     public String getProductName() {
@@ -65,8 +63,8 @@ public class CartPopUpPage extends BasePage {
         return new Product(getProductName(), getProductPrice(), getQuantity(), getTotalProductsCost());
     }
 
-    public CartPage goToCartPage() {
-        log.info("Clicking go to checkout");
+    public CartPage clickProceedToCheckout() {
+        log.info("Clicking proceed to checkout");
         clickElement(checkoutBtn);
         return new CartPage(driver);
     }

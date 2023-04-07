@@ -10,16 +10,18 @@ public class UserFactory {
         return new UserBuilder()
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName())
-                .eMail(faker.internet().emailAddress())
-                .password(faker.internet().password())
+                .city(faker.address().city())
+                .state(faker.address().state())
+                .postCode(faker.address().zipCode())
                 .build();
     }
     public User getAlreadyRegisteredUser(){
         return new UserBuilder()
                 .firstName(System.getProperty("name"))
                 .lastName(System.getProperty("lastName"))
-                .eMail(System.getProperty("eMail"))
-                .password(System.getProperty("password"))
+                .state(System.getProperty("state"))
+                .city(System.getProperty("city"))
+                .postCode(System.getProperty("postCode"))
                 .build();
     }
 }

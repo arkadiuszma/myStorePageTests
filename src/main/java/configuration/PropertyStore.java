@@ -30,7 +30,8 @@ public class PropertyStore {
         getObjectValues("searchTestData");
         getObjectValues("categoriesTestData");
         getObjectValues("basketTestData");
-            log.debug("Config values loaded");
+        getObjectValues("checkoutTest");
+        log.debug("Config values loaded");
         }
     private void getObjectValues(String object){
         Map<String, Object> properties = (Map<String, Object>) readConfigFile().get(object);

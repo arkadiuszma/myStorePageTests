@@ -25,6 +25,8 @@ public class CartPage extends BasePage {
     private WebElement noItemsMessage;
     @FindBy(css = "span.cart-products-count")
     private WebElement cartProductsCount;
+    @FindBy(css = "a.btn-primary")
+    private WebElement proceedToCheckoutBtn;
 
     public Order toOrder() {
         log.info("Getting products order from cart page");
@@ -61,5 +63,9 @@ public class CartPage extends BasePage {
     public String getCartProductsCount() {
         log.info("Getting products count located in basket");
         return cartProductsCount.getAttribute("innerText");
+    }
+    public void clickProceedToCheckout(){
+        log.info("Clicking proceed to checkout");
+        clickElement(proceedToCheckoutBtn);
     }
 }

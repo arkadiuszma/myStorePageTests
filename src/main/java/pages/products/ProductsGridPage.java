@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
+import pages.user.SignInPage;
 
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class ProductsGridPage extends BasePage {
     private List<WebElement> categoriesList;
     @FindBy(css = ".dropdown-submenu")
     private List<WebElement> subCategoriesList;
+    @FindBy(css = ".user-info a")
+    private WebElement signInBtn;
 
     public List<ProductsMiniaturePage> getProducts() {
         return products.stream().map(element -> new ProductsMiniaturePage(driver, element)).toList();
@@ -38,6 +41,9 @@ public class ProductsGridPage extends BasePage {
     public String getRandomProductTitle() {
         List<String> list = getProducts().stream().map(ProductsMiniaturePage::getProductTitle).toList();
         return getRandomElementFromList(list);
+    }
+    public void getProductByName(String name){
+        getProducts().stream().filter(el -> el.getProductTitle().equals(name)).toList().get(0).clickProduct();
     }
 
     public String getRandomProductNameAndClick() {
@@ -101,5 +107,10 @@ public class ProductsGridPage extends BasePage {
         log.info("Getting random products");
         getRandomElementFromList(getProducts()).clickProduct();
         return new ProductsDetailsPage(driver);
+    }
+    public SignInPage clickSignInBtn(){
+        log.info("Clicking sign in button");
+        clickElement(signInBtn);
+        return new SignInPage(driver);
     }
 }
