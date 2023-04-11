@@ -100,7 +100,7 @@ public class ProductsCategoriesPage extends BasePage {
     public boolean isPriceBetweenFilters(int priceFrom, int priceTo) {
         log.info("Checking are prices between entered filters");
         for (BigDecimal price : getPrices()) {
-            if (price.compareTo(new BigDecimal(priceTo))==0){
+            if (price.compareTo(new BigDecimal(priceTo)) == 0) {
                 return true;
             }
             int integerPrice = price.intValue();
@@ -119,9 +119,8 @@ public class ProductsCategoriesPage extends BasePage {
         return this;
     }
 
-    public ProductsDetailsPage getProductByName(String productName) {
+    public void getProductByName(String productName) {
         log.info("Getting product by name: " + productName);
         getProducts().stream().filter(el -> el.getProductTitle().equals(productName)).toList().get(0).clickProduct();
-        return new ProductsDetailsPage(driver);
     }
 }

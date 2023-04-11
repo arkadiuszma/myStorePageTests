@@ -7,25 +7,27 @@ import pages.base.BasePage;
 
 import java.math.BigDecimal;
 
-
 public class ProductsMiniaturePage extends BasePage {
 
     public ProductsMiniaturePage(WebDriver driver, WebElement element) {
         super(driver, element);
     }
+
     @FindBy(css = ".product-title")
     private WebElement productTitle;
 
     @FindBy(css = ".price")
     private WebElement productPrice;
 
-    public String getProductTitle(){
+    public String getProductTitle() {
         return getWebElementText(productTitle);
     }
-    public BigDecimal getProductPrice(){
+
+    public BigDecimal getProductPrice() {
         return getPrice(productPrice);
     }
-    public void clickProduct(){
+
+    public void clickProduct() {
         clickElement(productTitle);
     }
 }

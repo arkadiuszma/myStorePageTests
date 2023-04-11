@@ -1,7 +1,7 @@
 package tests.search;
 
 public class SearchTestDataProvider {
-    protected String getProductName(){
+    protected String getProductName() {
         return System.getProperty("product");
     }
 }

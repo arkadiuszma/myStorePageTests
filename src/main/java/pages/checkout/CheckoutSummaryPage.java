@@ -11,15 +11,17 @@ public class CheckoutSummaryPage extends BasePage {
     public CheckoutSummaryPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(css = "#order-details > ul > li:nth-child(1)")
     private WebElement orderReference;
     @FindBy(css = ".account")
     private WebElement myAccountBtn;
 
-    public String getOrderReference(){
+    public String getOrderReference() {
         return getWebElementText(orderReference).replace("Order reference: ", "");
     }
-    public void clickMyAccount(){
+
+    public void clickMyAccount() {
         log.info("Clicking my account button");
         clickElement(myAccountBtn);
     }

@@ -59,7 +59,8 @@ public class CartPopUpPage extends BasePage {
         log.info("Getting product name from cart pop up page");
         return productName.getAttribute("innerText");
     }
-    public Product getProductDetails(){
+
+    public Product getProductDetails() {
         return new Product(getProductName(), getProductPrice(), getQuantity(), getTotalProductsCost());
     }
 

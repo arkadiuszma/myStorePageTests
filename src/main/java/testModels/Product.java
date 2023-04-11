@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Product{
+public class Product {
     private String name;
     private BigDecimal price;
     private int quantity;
@@ -23,7 +23,8 @@ public class Product{
         this.quantity = quantity;
         this.totalCost = getTotalPrice();
     }
-    private BigDecimal getTotalPrice(){
+
+    private BigDecimal getTotalPrice() {
         return price.multiply(BigDecimal.valueOf(quantity));
     }
 }

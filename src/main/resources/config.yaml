@@ -1,5 +1,5 @@
 configuration:
-  browser: chrome
+  browser: edge
   webElementTimeout: 10
   defaultTimeout: 3
   url: http://146.59.32.4/index.php
@@ -38,12 +38,12 @@ basketTestData:
 
 checkoutTest:
   productNameInCheckoutTest: THE BEST IS YET POSTER
-  productPrice: 29.00
   secondAddress: Park Avenue 4
   secondCity: Texas
   secondState: California
   secondPostCode: 54214
   category: ORDER HISTORY AND DETAILS
+  orderStatus: Awaiting check payment
 
 
 

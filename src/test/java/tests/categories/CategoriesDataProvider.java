@@ -9,13 +9,16 @@ public class CategoriesDataProvider {
     protected int getSubCategoriesNumber() {
         return getIntValue(System.getProperty("subCategoryNumber"));
     }
+
     protected String getCategoryFilterText() {
         return System.getProperty("categoryFilter");
     }
-    protected int getPriceFrom(){
+
+    protected int getPriceFrom() {
         return getIntValue(System.getProperty("priceFrom"));
     }
-    protected int getPriceTo(){
+
+    protected int getPriceTo() {
         return getIntValue(System.getProperty("priceTo"));
     }
 

@@ -1,4 +1,4 @@
-package pages.user;
+package pages.orders;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -11,15 +11,17 @@ public class RowOrderHistoryPage extends BasePage {
     public RowOrderHistoryPage(WebDriver driver, WebElement element) {
         super(driver, element);
     }
+
     @FindBy(css = "tbody th")
     private WebElement orderReference;
     @FindBy(css = ".order-actions > a:nth-child(1)")
     private WebElement detailsBtn;
 
-    public String getOrderReferenceText(){
+    public String getOrderReferenceText() {
         return orderReference.getText();
     }
-    public void clickDetails(){
+
+    public void clickDetails() {
         log.info("Clicking order details");
         clickElement(detailsBtn);
     }

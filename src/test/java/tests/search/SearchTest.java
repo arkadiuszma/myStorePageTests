@@ -14,6 +14,7 @@ import java.util.List;
 public class SearchTest extends BaseTest {
     SearchTestDataProvider s = new SearchTestDataProvider();
     private String productName;
+
     @Test
     @DisplayName("Search product title test")
     public void shouldSearchExpectedProduct() {

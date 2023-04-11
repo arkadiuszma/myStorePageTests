@@ -56,7 +56,8 @@ public class CartPage extends BasePage {
         wait(2);
         return getPrice(totalProductCosts);
     }
-    public String getNoItemsInCartMessage(){
+
+    public String getNoItemsInCartMessage() {
         return getWebElementText(noItemsMessage);
     }
 
@@ -64,7 +65,8 @@ public class CartPage extends BasePage {
         log.info("Getting products count located in basket");
         return cartProductsCount.getAttribute("innerText");
     }
-    public void clickProceedToCheckout(){
+
+    public void clickProceedToCheckout() {
         log.info("Clicking proceed to checkout");
         clickElement(proceedToCheckoutBtn);
     }

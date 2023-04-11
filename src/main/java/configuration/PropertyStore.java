@@ -24,6 +24,7 @@ public class PropertyStore {
             throw new RuntimeException(e);
         }
     }
+
     private void getConfigFileValues() {
         getObjectValues("configuration");
         getObjectValues("user");
@@ -32,8 +33,9 @@ public class PropertyStore {
         getObjectValues("basketTestData");
         getObjectValues("checkoutTest");
         log.debug("Config values loaded");
-        }
-    private void getObjectValues(String object){
+    }
+
+    private void getObjectValues(String object) {
         Map<String, Object> properties = (Map<String, Object>) readConfigFile().get(object);
         if (properties != null) {
             properties.forEach((key, value) -> System.setProperty(key, value.toString()));

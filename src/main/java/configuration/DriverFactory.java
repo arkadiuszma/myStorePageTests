@@ -29,8 +29,9 @@ public class DriverFactory {
         this.timeout = System.getProperty("defaultTimeout") != null ? getLong(System.getProperty("defaultTimeout")) : this.timeout;
         this.url = System.getProperty("url") != null ? System.getProperty("url") : null;
     }
-    public WebDriver getDriver(){
-        switch(Browser.valueOf(this.browser)){
+
+    public WebDriver getDriver() {
+        switch (Browser.valueOf(this.browser)) {
             case CHROME -> {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("start-maximized");
@@ -56,7 +57,8 @@ public class DriverFactory {
         log.debug(("Default timeout: " + this.timeout + " sec."));
         return driver;
     }
-    public long getLong(String value){
+
+    public long getLong(String value) {
         return Long.parseLong(value);
     }
 }

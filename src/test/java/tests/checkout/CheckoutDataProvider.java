@@ -1,7 +1,5 @@
 package tests.checkout;
 
-import java.math.BigDecimal;
-
 public class CheckoutDataProvider {
     protected String getEmail() {
         return System.getProperty("eMail");
@@ -34,7 +32,16 @@ public class CheckoutDataProvider {
     protected String getProductName() {
         return System.getProperty("productNameInCheckoutTest");
     }
-    protected BigDecimal getProductPrice(){
-        return BigDecimal.valueOf(Long.parseLong(System.getProperty("productPrice")));
+
+    protected String getOrderStatus() {
+        return System.getProperty("orderStatus");
+    }
+
+    protected String getUserName() {
+        return System.getProperty("name");
+    }
+
+    protected String getUserLastName() {
+        return System.getProperty("lastName");
     }
 }

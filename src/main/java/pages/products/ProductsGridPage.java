@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
-import pages.user.SignInPage;
 
 import java.util.List;
 
@@ -42,7 +41,8 @@ public class ProductsGridPage extends BasePage {
         List<String> list = getProducts().stream().map(ProductsMiniaturePage::getProductTitle).toList();
         return getRandomElementFromList(list);
     }
-    public void getProductByName(String name){
+
+    public void getProductByName(String name) {
         getProducts().stream().filter(el -> el.getProductTitle().equals(name)).toList().get(0).clickProduct();
     }
 
@@ -62,20 +62,18 @@ public class ProductsGridPage extends BasePage {
         return searchItems.stream().map(WebElement::getText).toList();
     }
 
-    public ProductsResultPage clickSearchProducts() {
+    public void clickSearchProducts() {
         clickElement(searchBtn);
-        return new ProductsResultPage(driver);
     }
 
-    public ProductsCategoriesPage clickCategoryByIndex(int numberOfElement) {
+    public void clickCategoryByIndex(int numberOfElement) {
         log.info("Clicking in chosen category");
         categoriesList.get(numberOfElement).click();
-        return new ProductsCategoriesPage(driver);
     }
-    public ProductsCategoriesPage clickCategoryByName(String name) {
+
+    public void clickCategoryByName(String name) {
         log.info("Clicking in chosen category: " + name);
         categoriesList.stream().filter(el -> el.getText().equals(name)).toList().get(0).click();
-        return new ProductsCategoriesPage(driver);
     }
 
     public String getCategoryText(int numberOfElement) {
@@ -89,11 +87,10 @@ public class ProductsGridPage extends BasePage {
         return getWebElementText(subCategoriesList.get(i));
     }
 
-    public ProductsCategoriesPage clickSubCategory(int i) {
+    public void clickSubCategory(int i) {
         log.info("Clicking sub category");
         chooseProperCategory(i);
         subCategoriesList.get(i).click();
-        return new ProductsCategoriesPage(driver);
     }
 
     private void chooseProperCategory(int i) {
@@ -103,14 +100,15 @@ public class ProductsGridPage extends BasePage {
             moveToElement(categoriesList.get(1));
         }
     }
-    public ProductsDetailsPage getRandomProduct(){
+
+    public ProductsDetailsPage getRandomProduct() {
         log.info("Getting random products");
         getRandomElementFromList(getProducts()).clickProduct();
         return new ProductsDetailsPage(driver);
     }
-    public SignInPage clickSignInBtn(){
+
+    public void clickSignInBtn() {
         log.info("Clicking sign in button");
         clickElement(signInBtn);
-        return new SignInPage(driver);
     }
 }

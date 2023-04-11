@@ -14,6 +14,7 @@ public class CheckoutAddressPage extends BasePage {
     public CheckoutAddressPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(css = "[data-link-action='different-invoice-address']")
     private WebElement differentBillingAddressBtn;
 
@@ -32,34 +33,40 @@ public class CheckoutAddressPage extends BasePage {
     @FindBy(css = "#delivery-addresses article:nth-child(2) .delete-address")
     private WebElement deleteSecondAddressBtn;
 
-    public CheckoutAddressPage clickDifferentBillingAddress(){
+    public CheckoutAddressPage clickDifferentBillingAddress() {
         log.info("Clicking difference billing address");
         clickElement(differentBillingAddressBtn);
         return this;
     }
-    public CheckoutAddressPage enterAddress(String address){
+
+    public CheckoutAddressPage enterAddress(String address) {
         sendKeysToElement(addressInput, address);
         return this;
     }
-    public CheckoutAddressPage enterCity(String city){
+
+    public CheckoutAddressPage enterCity(String city) {
         sendKeysToElement(cityInput, city);
         return this;
     }
-    public CheckoutAddressPage selectState(String state){
+
+    public CheckoutAddressPage selectState(String state) {
         log.info("Selecting state: " + state);
         new Select(stateSelect).selectByVisibleText(state);
         return this;
     }
-    public CheckoutAddressPage enterPostCode(String postCode){
+
+    public CheckoutAddressPage enterPostCode(String postCode) {
         sendKeysToElement(postCodeInput, postCode);
         return this;
     }
-    public void clickContinue(){
+
+    public void clickContinue() {
         log.info("Clicking continue");
         clickElement(continueButton);
     }
-    public CheckoutAddressPage removingSecondAddressIfExist(){
-        if (shippingAddresses.size()==2){
+
+    public CheckoutAddressPage removingSecondAddressIfExist() {
+        if (shippingAddresses.size() == 2) {
             clickElement(deleteSecondAddressBtn);
         }
         return this;

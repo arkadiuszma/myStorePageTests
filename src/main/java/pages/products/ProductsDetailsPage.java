@@ -5,14 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
-import pages.cart.CartPopUpPage;
 import testModels.Product;
 
 import java.math.BigDecimal;
 
 @Slf4j
 public class ProductsDetailsPage extends BasePage {
-    Product product;
     public ProductsDetailsPage(WebDriver driver) {
         super(driver);
     }
@@ -34,10 +32,9 @@ public class ProductsDetailsPage extends BasePage {
         return this;
     }
 
-    public CartPopUpPage addToCart() {
+    public void addToCart() {
         log.info("Adding product to cart.");
         clickElement(addToCartBtn);
-        return new CartPopUpPage(driver);
     }
 
     public String getCartProductsCount() {
@@ -49,15 +46,18 @@ public class ProductsDetailsPage extends BasePage {
         log.info("Getting product price from product details page");
         return getPriceFromString(productPrice.getAttribute("innerText"));
     }
-    public String getProductName(){
+
+    public String getProductName() {
         log.info("Getting product name from details page");
         return productName.getAttribute("innerText");
     }
-    public int getQuantity(){
+
+    public int getQuantity() {
         log.info("Getting quantity from details page");
         return Integer.parseInt(quantity.getAttribute("value"));
     }
-    public Product getProductDetailsBeforeAddToCart(){
+
+    public Product getProductDetailsBeforeAddToCart() {
         return new Product(getProductName(), getProductPrice(), getQuantity());
     }
 }

@@ -13,8 +13,9 @@ import pages.base.BasePage;
 @Slf4j
 public abstract class BaseTest {
     protected WebDriver driver;
+
     @BeforeAll
-    protected static void loadConfig(){
+    protected static void loadConfig() {
         new PropertyStore();
     }
 
@@ -29,8 +30,9 @@ public abstract class BaseTest {
         driver.quit();
         log.info("Browser was closed.");
     }
+
     @SneakyThrows
-    protected <T extends BasePage> T at(Class <T> pageName){
+    protected <T extends BasePage> T at(Class<T> pageName) {
         log.debug("Current page object: " + pageName.getName());
         return pageName.getDeclaredConstructor(WebDriver.class).newInstance(driver);
     }

@@ -11,10 +11,11 @@ public class CheckoutShippingPage extends BasePage {
     public CheckoutShippingPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(css = "[name='confirmDeliveryOption']")
     private WebElement continueButton;
 
-    public void clickContinue(){
+    public void clickContinue() {
         log.info("Clicking continue");
         clickElement(continueButton);
     }

@@ -18,6 +18,7 @@ public class SignInPage extends BasePage {
     private WebElement passwordInput;
     @FindBy(css = "#submit-login")
     private WebElement signInBtn;
+
     public SignInPage enterEmail(String email) {
         sendKeysToElement(emailInput, email);
         return this;
@@ -27,7 +28,8 @@ public class SignInPage extends BasePage {
         sendKeysToElement(passwordInput, password);
         return this;
     }
-    public void confirmSignIn(){
+
+    public void confirmSignIn() {
         log.info("Confirming sign in");
         clickElement(signInBtn);
     }

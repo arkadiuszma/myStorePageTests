@@ -14,13 +14,15 @@ public class ProductsResultPage extends BasePage {
     public ProductsResultPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(css = ".product-miniature")
     private List<WebElement> products;
 
-    public List<ProductsMiniaturePage> getProducts(){
+    public List<ProductsMiniaturePage> getProducts() {
         return products.stream().map(element -> new ProductsMiniaturePage(driver, element)).toList();
     }
-    public String getProductTitle(){
+
+    public String getProductTitle() {
         log.info("Getting product title");
         String productTitle = getProducts().stream().map(ProductsMiniaturePage::getProductTitle).toList().get(0);
         log.info("Product title: " + productTitle);
