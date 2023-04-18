@@ -2,7 +2,6 @@ package tests.cart;
 
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.cart.CartPage;
@@ -24,7 +23,6 @@ public class BasketTest extends BaseTest {
     CartDataProvider c = new CartDataProvider();
     Product productDetailsAfterAdd;
     Product productDetailsBeforeAdd;
-    SoftAssertions s = new SoftAssertions();
     Order expectedOrder = new Order();
     Order actualOrder = new Order();
     private final int productsNumber = c.getRemovingTestProductNumber();
@@ -69,14 +67,17 @@ public class BasketTest extends BaseTest {
         BigDecimal cost = at(CartPopUpPage.class).clickProceedToCheckout().getTotalItemsCost();
         BigDecimal expectedCost = expectedOrder.getTotalOrderSum();
         boolean isEqualAfterFirstRemove = isTotalCostEqualAfterRemove(expectedOrder.getProductsCount());
+
         if (expectedOrder.getProductsCount() > 0 && expectedOrder.getProductsCount() >= indexOfElementToRemove) {
             boolean isEqualAfterSecondRemove = isTotalCostEqualAfterRemove(indexOfElementToRemove);
             s.assertThat(isEqualAfterSecondRemove).isEqualTo(true);
         }
+
         if (expectedOrder.getProductsCount() == 0) {
             s.assertThat(at(CartPage.class).getNoItemsInCartMessage()).isEqualTo(c.getMessage());
             s.assertThat(at(CartPage.class).getCartProductsCount()).isEqualTo(c.getZeroQuantityInBasketText());
         }
+
         log.info("Start assertions");
         s.assertThat(cost).isEqualTo(expectedCost);
         s.assertThat(isEqualAfterFirstRemove).isEqualTo(true);

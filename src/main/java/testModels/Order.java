@@ -17,18 +17,14 @@ public class Order {
     }
 
     public void addProduct(Product product) {
-        boolean isInOrder = false;
         for (Product p : products) {
             if (product.getName().equals(p.getName())) {
                 p.setQuantity(p.getQuantity() + product.getQuantity());
                 p.setTotalCost(p.getTotalCost().add(product.getTotalCost()));
-                isInOrder = true;
-                break;
+                return;
             }
         }
-        if (!isInOrder) {
-            products.add(product);
-        }
+        products.add(product);
     }
 
     public BigDecimal getTotalOrderSum() {

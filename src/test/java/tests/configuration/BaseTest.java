@@ -4,6 +4,7 @@ import configuration.DriverFactory;
 import configuration.PropertyStore;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import pages.base.BasePage;
 @Slf4j
 public abstract class BaseTest {
     protected WebDriver driver;
+    protected SoftAssertions s = new SoftAssertions();
 
     @BeforeAll
     protected static void loadConfig() {

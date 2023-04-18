@@ -20,10 +20,7 @@ public class CartDataProvider {
 
     protected String getQuantityAssertionText() {
         int qnt = getQuantity();
-        if (qnt == 1) {
-            return "There is " + qnt + " item in your cart.";
-        }
-        return "There are " + qnt + " items in your cart.";
+        return qnt == 1 ? "There is " + qnt + " item in your cart." : "There are " + qnt + " items in your cart.";
     }
 
     protected String getCartQuantityExpectedText() {

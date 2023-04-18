@@ -1,7 +1,6 @@
 package tests.categories;
 
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.products.ProductsCategoriesPage;
@@ -11,7 +10,6 @@ import tests.configuration.BaseTest;
 @Slf4j
 public class CategoriesTest extends BaseTest {
     CategoriesDataProvider c = new CategoriesDataProvider();
-    SoftAssertions s = new SoftAssertions();
 
     @Test
     @DisplayName("Categories test")
@@ -23,8 +21,8 @@ public class CategoriesTest extends BaseTest {
             s.assertThat(at(ProductsCategoriesPage.class).isFilterGridDisplayed()).isEqualTo(true);
             s.assertThat(categoryName).isEqualTo(at(ProductsCategoriesPage.class).getCategoryName());
             s.assertThat(at(ProductsCategoriesPage.class).getNumberOfProducts()).isEqualTo(at(ProductsCategoriesPage.class).getProductsCount());
-            s.assertAll();
         }
+        s.assertAll();
     }
 
     @Test
@@ -37,7 +35,7 @@ public class CategoriesTest extends BaseTest {
             s.assertThat(at(ProductsCategoriesPage.class).isFilterGridDisplayed()).isEqualTo(true);
             s.assertThat(categoryName).isEqualTo(at(ProductsCategoriesPage.class).getCategoryName());
             s.assertThat(at(ProductsCategoriesPage.class).getNumberOfProducts()).isEqualTo(at(ProductsCategoriesPage.class).getProductsCount());
-            s.assertAll();
         }
+        s.assertAll();
     }
 }

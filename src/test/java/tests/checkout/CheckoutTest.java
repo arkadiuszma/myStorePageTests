@@ -26,7 +26,6 @@ import java.util.Date;
 @Slf4j
 public class CheckoutTest extends BaseTest {
     CheckoutDataProvider c = new CheckoutDataProvider();
-    SoftAssertions s = new SoftAssertions();
     private final String invoiceAddress = c.getAddress();
     private final String invoiceCity = c.getCity();
     private final String invoiceState = c.getState();
@@ -45,12 +44,13 @@ public class CheckoutTest extends BaseTest {
         goToOrderHistoryByReferrence();
 
         log.info("Start assertions");
-        s.assertThat(at(OrderHistoryPage.class).getOrderDate()).isEqualTo(getCurrentDate());
-        s.assertThat(at(OrderHistoryPage.class).getOrderStatus()).isEqualTo(c.getOrderStatus());
-        s.assertThat(at(OrderHistoryPage.class).getTotalPrice()).isEqualTo(totalPrice);
-        s.assertThat(at(OrderHistoryPage.class).getDeliveryAddressText()).isEqualTo(getDeliveryAddressText());
-        s.assertThat(at(OrderHistoryPage.class).getInvoiceAddressText()).isEqualTo(getInvoiceAddressText());
-        s.assertAll();
+        SoftAssertions.assertSoftly(s -> {
+            s.assertThat(at(OrderHistoryPage.class).getOrderDate()).isEqualTo(getCurrentDate());
+            s.assertThat(at(OrderHistoryPage.class).getOrderStatus()).isEqualTo(c.getOrderStatus());
+            s.assertThat(at(OrderHistoryPage.class).getTotalPrice()).isEqualTo(totalPrice);
+            s.assertThat(at(OrderHistoryPage.class).getDeliveryAddressText()).isEqualTo(getDeliveryAddressText());
+            s.assertThat(at(OrderHistoryPage.class).getInvoiceAddressText()).isEqualTo(getInvoiceAddressText());
+        });
     }
 
     private void signIn(String email, String password) {
